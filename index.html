@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+    <title>Meme Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 1s ease-in-out;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: rgba(17, 16, 16, 0.651);
+        }
+
+        .navigation {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .article-description {
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            color: rgba(17, 16, 16, 0.651);
+            cursor: pointer;
+            align-self: flex-end;
+        }
+
+        .article-description::after {
+            content: ' ⎇';
+        }
+
+        .container {
+            padding: 50px 300px;
+            
+        }
+        section{
+            /* background: rgb(169,164,240);
+background: linear-gradient(100deg, rgba(169,164,240,1) 0%, rgba(74,74,218,0.1516807406556373) 50%, rgba(0,212,255,1) 100%);  */
+        }
+
+        section:nth-child(2n) {
+            background: rgba(69, 116, 168, 0.685);
+        }
+
+        .container__article {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .container__article-item {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        li {
+            list-style-type: none;
+            cursor: pointer;
+        }
+
+        .footer {
+            position: relative;
+        }
+
+        .footer__socials {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 650px;
+            bottom: -300px;
+        }
+
+        body {
+            background: rgba(104, 163, 230, 0.685);
+        }
+
+        .container__content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 140px 300px;
+            background: rgba(104, 163, 230, 0.685);
+            position: relative;
+
+        }
+
+        .content-format {
+            width: 200px;
+            height: 300px;
+        }
+
+        .content-format:hover {
+            transform: rotate(-2deg) translateY(-5px) scale(1.025);
+        }
+
+        .container__content-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+
+            width: 300px;
+            gap: 10px;
+        }
+
+        .container__content-item:hover {
+            /* border-bottom: 0.5px rgba(17, 16, 16, 0.651) solid;
+            border-right: 4px rgba(17, 16, 16, 0.651) solid; */
+            /* border: 1px rgba(17, 16, 16, 0.651) solid; */
+        }
+
+        .page-wrapper {
+            position: relative;
+        }
+
+        .text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 21px;
+            color: rgba(17, 16, 16, 0.651);
+            line-height: 30px;
+            font-weight: 400;
+        }
+
+        .title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 30px;
+            color: rgba(17, 16, 16, 0.651);
+        }
+
+        .title-article {
+            font-family: 'Poppins', sans-serif;
+            font-size: 30px;
+            color: rgba(17, 16, 16, 0.651);
+        }
+
+        .title:hover {
+            animation: hoverScale 1.5s infinite;
+            cursor: pointer;
+        }
+
+        .tale:hover {
+            animation: menuhover 1s normal;
+            cursor: pointer;
+        }
+
+        .header {
+            display: flex;
+            /* flex-direction: column; */
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            /* top: 10px; */
+            left: 35%;
+            background: rgba(104, 163, 230, 0.685);
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            /* border: 1px gray solid; */
+            z-index: 100;
+        }
+
+        .back-button {
+            position: fixed;
+            /* right: 10px; */
+            top: 92%;
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 40px;
+            left: 10%;
+            color: rgba(17, 16, 16, 0.651);
+            background: rgba(69, 116, 168, 0.685);
+            opacity: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        .back-button:hover {
+            /* animation: backbutton 2s infinite; */
+            opacity: 100%;
+        }
+
+        .save-button {
+            width: 115px;
+            border: none;
+            color: rgba(17, 16, 16, 0.651);
+            background: rgba(69, 116, 168, 0.685);
+            border-radius: 10px;
+        }
+
+        .save-button:hover {
+            cursor: pointer;
+            color: white;
+            animation: hoverNut 3s infinite;
+        }
+
+        @keyframes hoverScale {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.01);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes hoverNut {
+            0% {
+                width: 115px;
+            }
+
+            50% {
+                width: 103px;
+                border-radius: 4px;
+            }
+
+            100% {
+                width: 115px;
+            }
+
+            /* 100%{
+                transform: rotate(0deg);
+            } */
+        }
+
+        @keyframes menuhover {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(1.5deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes backbutton {
+            0% {
+                background: rgba(17, 16, 16, 0.651);
+            }
+
+            0% {
+                background: rgba(61, 58, 58, 0.651);
+            }
+
+            0% {
+                background: rgba(17, 16, 16, 0.651);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+
+        <header class="header">
+
+            <h1 class="title">Меме Дашборд</h1>
+
+            <nav>
+                <ul class="navigation">
+                    <li class="text tale">Головна</li>
+                    <li class="text tale">Гаряче</li>
+                    <li class="text tale">Каталог</li>
+                    <li class="text tale">Сміття</li>
+                </ul>
+            </nav>
+
+        </header>
+        <main>
+            <section class="content">
+                <div class="container container__content">
+
+                    <div class="container__content-item">
+                        <img class="content-format" src="./img/img-1.jpeg" alt="">
+                        <p class="content-description text">Гарні пікселі</p>
+                        <button class="save-button text">Зберегти пікчу</button>
+                    </div>
+                    <div class="container__content-item">
+                        <img class="content-format" src="./img/img-1.jpeg" alt="">
+                        <p class="content-description text">Гарні пікселі</p>
+                        <button class="save-button text">Зберегти пікчу</button>
+                    </div>
+                    <div class="container__content-item">
+                        <img class="content-format" src="./img/img-1.jpeg" alt="">
+                        <p class="content-description text">Гарні пікселі</p>
+                        <button class="save-button text">Зберегти пікчу</button>
+                    </div>
+                    <div class="container__content-item">
+                        <img class="content-format" src="./img/img-1.jpeg" alt="">
+                        <p class="content-description text">Гарні пікселі</p>
+                        <button class="save-button text">Зберегти пікчу</button>
+                    </div>
+                    <div class="container__content-item">
+                        <img class="content-format" src="./img/img-1.jpeg" alt="">
+                        <p class="content-description text">Гарні пікселі</p>
+                        <button class="save-button text">Зберегти пікчу</button>
+                    </div>
+                    <div class="container__content-item">
+                        <img class="content-format" src="./img/img-1.jpeg" alt="">
+                        <p class="content-description text">Гарні пікселі</p>
+                        <button class="save-button text">Зберегти пікчу</button>
+                    </div>
+                    <div class="container__content-item">
+                        <img class="content-format" src="./img/img-1.jpeg" alt="">
+                        <p class="content-description text">Гарні пікселі</p>
+                        <button class="save-button text">Зберегти пікчу</button>
+                    </div>
+                    <div class="container__content-item">
+                        <img class="content-format" src="./img/img-1.jpeg" alt="">
+                        <p class="content-description text">Гарні пікселі</p>
+                        <button class="save-button text">Зберегти пікчу</button>
+                    </div>
+                    <div class="container__content-item">
+                        <img class="content-format" src="./img/img-1.jpeg" alt="">
+                        <p class="content-description text">Гарні пікселі</p>
+                        <button class="save-button text">Зберегти пікчу</button>
+                    </div>
+                    <div class="container__content-item">
+                        <img class="content-format" src="./img/img-1.jpeg" alt="">
+                        <p class="content-description text">Гарні пікселі</p>
+                        <button class="save-button text">Зберегти пікчу</button>
+                    </div>
+                    <div class="container__content-item">
+                        <img class="content-format" src="./img/img-1.jpeg" alt="">
+                        <p class="content-description text">Гарні пікселі</p>
+                        <button class="save-button text">Зберегти пікчу</button>
+                    </div>
+                    <div class="container__content-item">
+                        <img class="content-format" src="./img/img-1.jpeg" alt="">
+                        <p class="content-description text">Гарні пікселі</p>
+                        <button class="save-button text">Зберегти пікчу</button>
+                    </div>
+                    <div class="container__content-item">
+                        <img class="content-format" src="./img/img-1.jpeg" alt="">
+                        <p class="content-description text">Гарні пікселі</p>
+                        <button class="save-button text">Зберегти пікчу</button>
+                    </div>
+                    <div class="container__content-item">
+                        <img class="content-format" src="./img/img-1.jpeg" alt="">
+                        <p class="content-description text">Гарні пікселі</p>
+                        <button class="save-button text">Зберегти пікчу</button>
+                    </div>
+
+
+                </div>
+            </section>
+
+            <section class="articles">
+                <div class="container container__article">
+                    <button class="back-button"><a href="#">🔼 <span>Назад!</span></a></button>
+                    <div class="container__article-item">
+                        <h2 class="title-article">Тільтуеш? Вихід Є!</h2>
+                        <p class="text">Мудреці якось сказали молодцю крутому, що не все то світится
+                            щоб дати тобі світло. Коли програєш, то стань на місце ворога своєго та зрозумій, що
+                            ворогів ти сам взагалі ніколи не мав. Все що ти вважаеш поганим таким не є, це суб'єкт
+                            вирішує,
+                            що йому вигідно, а що сусіду віддати задарма.
+                        </p>
+                        <p class="article-description">Читати далі</p>
+                    </div>
+                    <div class="container__article-item">
+                        <h2 class="title-article">Тільтуеш? Вихід Є!</h2>
+                        <p class="text">Мудреці якось сказали молодцю крутому, що не все то світится
+                            щоб дати тобі світло. Коли програєш, то стань на місце ворога своєго та зрозумій, що
+                            ворогів ти сам взагалі ніколи не мав. Все що ти вважаеш поганим таким не є, це суб'єкт
+                            вирішує,
+                            що йому вигідно, а що сусіду віддати задарма.
+                        </p>
+                        <p class="article-description">Читати далі</p>
+                    </div>
+                    <div class="container__article-item">
+                        <h2 class="title-article">Тільтуеш? Вихід Є!</h2>
+                        <p class="text">Мудреці якось сказали молодцю крутому, що не все то світится
+                            щоб дати тобі світло. Коли програєш, то стань на місце ворога своєго та зрозумій, що
+                            ворогів ти сам взагалі ніколи не мав. Все що ти вважаеш поганим таким не є, це суб'єкт
+                            вирішує,
+                            що йому вигідно, а що сусіду віддати задарма.
+                        </p>
+                        <p class="article-description">Читати далі</p>
+                    </div>
+                </div>
+            </section>
+            <section class="about">
+                <div class="container">
+
+                </div>
+            </section>
+        </main>
+
+        <!-- <footer class="footer">
+            <ul class="footer__socials">
+                <li><a href="LinkedIn.com">My LI</a></li>
+                <li><a href="tg.me">My TG</a></li>
+                <li><a href="vero.com">My VERO</a></li>
+                
+            </ul>
+        </footer> -->
+    </div>
+</body>
+
+</html>
