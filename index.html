@@ -134,7 +134,8 @@ background: linear-gradient(100deg, rgba(169,164,240,1) 0%, rgba(74,74,218,0.151
             flex-wrap: wrap;
             gap: 20px;
             padding: 140px 300px;
-            background: rgba(104, 163, 230, 0.685);
+            /* background: rgba(104, 163, 230, 0.685); */
+            background: linear-gradient(rgba(182, 208, 238, 0.685),rgba(69, 116, 168, 0.685));
             position: relative;
             
         }
@@ -241,6 +242,11 @@ background: linear-gradient(100deg, rgba(169,164,240,1) 0%, rgba(74,74,218,0.151
         @media (max-width:535px) {
             .header{
                 flex-direction: column;
+            }
+        }
+        @media (max-width:405px) {
+            .header{
+                writing-mode: vertical-lr;
             }
         }
        
