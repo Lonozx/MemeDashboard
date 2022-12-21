@@ -24,7 +24,32 @@
             text-decoration: none;
             color: rgba(17, 16, 16, 0.651);
         }
-
+        .container__contact{
+            padding: 100px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+        @media (max-width:768px) {
+            .formedUp{
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        .formedUp{
+            display: flex;
+            
+            gap: 40px;
+        }
+        .inputed{
+            border: none;
+            border-bottom: 0.5px rgba(17, 16, 16, 0.651) solid;
+            background: transparent;
+            width: 300px;
+        }
         .navigation {
             display: flex;
             gap: 20px;
@@ -47,6 +72,11 @@
         .container {
             padding: 50px 300px;
             
+        }
+        @media (max-width:768px) {
+            .container{
+                padding: 30px 10px;
+            }
         }
         section{
             /* background: rgb(169,164,240);
@@ -101,7 +131,13 @@ background: linear-gradient(100deg, rgba(169,164,240,1) 0%, rgba(74,74,218,0.151
             padding: 140px 300px;
             background: rgba(104, 163, 230, 0.685);
             position: relative;
+            
+        }
 
+        @media (max-width:768px) {
+            .container__content{
+                padding: 40px 10px;
+            }
         }
 
         .content-format {
@@ -141,7 +177,16 @@ background: linear-gradient(100deg, rgba(169,164,240,1) 0%, rgba(74,74,218,0.151
             line-height: 30px;
             font-weight: 400;
         }
-
+       /* .container__content-modal{
+            display: none;
+            width: 100%;
+            height: 100%;
+            padding: 300px 0;
+            color: rgba(17, 16, 16, 0.651);
+            background: rgba(69, 116, 168, 0.685);
+            border: 1px black solid;
+            position: fixed;
+        }*/
         .title {
             font-family: 'Poppins', sans-serif;
             font-size: 30px;
@@ -177,6 +222,21 @@ background: linear-gradient(100deg, rgba(169,164,240,1) 0%, rgba(74,74,218,0.151
             border-bottom-left-radius: 10px;
             /* border: 1px gray solid; */
             z-index: 100;
+        }
+        @media (max-width:768px) {
+            .header{
+                left: 40px;
+            }
+        }
+        @media (max-width:580px) {
+            .header{
+                left: 10px;
+            }
+        }
+        @media (max-width:535px) {
+            .header{
+                display: none;
+            }
         }
 
         .back-button {
@@ -215,6 +275,18 @@ background: linear-gradient(100deg, rgba(169,164,240,1) 0%, rgba(74,74,218,0.151
             cursor: pointer;
             color: white;
             animation: hoverNut 3s infinite;
+        }
+
+        .submit-button{
+            width: 115px;
+            border: none;
+            color: rgba(17, 16, 16, 0.651);
+            background: rgba(69, 116, 168, 0.685);
+            border-radius: 10px;
+        }
+        .submit-button:hover{
+            color: white;
+            cursor: pointer;
         }
 
         @keyframes hoverScale {
@@ -277,6 +349,7 @@ background: linear-gradient(100deg, rgba(169,164,240,1) 0%, rgba(74,74,218,0.151
                 background: rgba(17, 16, 16, 0.651);
             }
         }
+        
     </style>
 </head>
 
@@ -300,7 +373,9 @@ background: linear-gradient(100deg, rgba(169,164,240,1) 0%, rgba(74,74,218,0.151
         <main>
             <section class="content">
                 <div class="container container__content">
+                    <div class="container__content-modal">
 
+                    </div>
                     <div class="container__content-item">
                         <img class="content-format" src="./img/img-1.jpeg" alt="">
                         <p class="content-description text">Гарні пікселі</p>
@@ -413,7 +488,17 @@ background: linear-gradient(100deg, rgba(169,164,240,1) 0%, rgba(74,74,218,0.151
             </section>
             <section class="about">
                 <div class="container">
+                    <div class="container__contact">
+                        <h2 class="title-article">Зв'яжіться з нами для нових постів!</h2>
+                        <form action="subtitute" class="formedUp" netlify>
+                            <input class="inputed text" type="text" name="Name" placeholder="Олесь">
+                            <input class="inputed text" type="text" name="Surname" placeholder="Поневірянський">
+                            <input class="inputed text" type="text" name="email" placeholder="somemail@gmail.com" id="email">
+                            <button type="submit" class="text submit-button">Надіслати</button>
+                        </form>
+                        <p class="text">Якщо хочете підтримати:</p>
 
+                    </div>
                 </div>
             </section>
         </main>
@@ -428,5 +513,31 @@ background: linear-gradient(100deg, rgba(169,164,240,1) 0%, rgba(74,74,218,0.151
         </footer> -->
     </div>
 </body>
-
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
 </html>
